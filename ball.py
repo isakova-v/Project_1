@@ -50,14 +50,23 @@ while not finished:
             click()
 
     new_ball()
-
-    while (x-r)>0 and (x+r)<1200 and (y-r)>0 and (y+r)<900:
-
-        pygame.display.update()
-        screen.fill(BLACK)
-        x += delta_x
-        y += delta_y
-        circle(screen, color, (x, y), r)
+    i = 0
+    while i<100000:
+        i+=1
+        if (x-r)>0 and (x+r)<1200 and (y-r)>0 and (y+r)<900:
+            pygame.display.update()
+            screen.fill(BLACK)
+            x += delta_x
+            y += delta_y
+            circle(screen, color, (x, y), r)
+        elif (x-r)<0 or (x+r)>1200:
+            delta_x = -delta_x
+            x += delta_x
+            y += delta_y
+        elif (y-r)<0 and (y+r)>900:
+            delta_y = -delta_y
+            x += delta_x
+            y += delta_y
 
 
 pygame.quit()
