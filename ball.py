@@ -6,6 +6,7 @@ pygame.init()
 FPS = 2
 screen = pygame.display.set_mode((1200, 900))
 
+#colors of balls
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
@@ -20,7 +21,7 @@ def new_ball():
     global x, y, r
     x = randint(100, 1100)
     y = randint(100, 900)
-    r = randint(10, 100)
+    r = randint(100, 700)
     color = COLORS[randint(0, 5)]
     circle(screen, color, (x, y), r)
 
@@ -28,6 +29,8 @@ pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
 
+
+Score = []
 while not finished:
     clock.tick(FPS)
     for event in pygame.event.get():
@@ -36,10 +39,10 @@ while not finished:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             print('Click!')
             def click():
-                print(x, y, r)
-                print(event.pos[0], event.pos[1])
                 if (((event.pos[0] - x)**2) + (event.pos[1] - y)**2) <= (r**2):
                     print('OKEY')
+                    Score.append(1)
+                    print(len(Score))
                 else:
                     print('TRY AGAIN')
             click()
