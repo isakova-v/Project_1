@@ -8,7 +8,7 @@ pygame.init()
 
 FPS = 60
 screen = pygame.display.set_mode((1200, 900))
-time = 5  # time of one game
+time = 15  # time of one game
 
 # colors of balls
 RED = (255, 0, 0)
@@ -45,7 +45,7 @@ def new_square():  # New square as a target
     delta_x = randint(-10, 10)
     delta_y = randint(-50, 50)
     dvx = 0
-    dvy = randint(1, 5)
+    dvy = randint(1, 10)
     return [x, y, a, color, delta_x, delta_y, dvx, dvy]
 
 
