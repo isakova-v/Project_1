@@ -1,14 +1,14 @@
 from random import randrange as rnd, choice
-import tkinter as tk
+import tkinter as tk #graphic library
 import math
 import time
 
 
-root = tk.Tk()
+root = tk.Tk() #created window
 fr = tk.Frame(root)
-root.geometry('800x600')
-canv = tk.Canvas(root, bg='white')
-canv.pack(fill=tk.BOTH, expand=1)
+root.geometry('800x600') #set the size of the window
+canv = tk.Canvas(root, bg='white') #creates a white background surface
+canv.pack(fill=tk.BOTH, expand=1) #object packing method, 'expand=1' makes label in the center of frame
 
 
 class ball():
@@ -51,8 +51,7 @@ class ball():
         self.x и self.y с учетом скоростей self.vx и self.vy, силы гравитации, действующей на мяч,
         и стен по краям окна (размер окна 800х600).
         """
-        # FIXME
-        if self.x + self.r > 800:
+        if self.x + self.r >= 800:
             self.vx = -0.7 * self.vx
             self.x =  799 - self.r
         if self.y + self.r >= 600:
@@ -99,7 +98,6 @@ class ball():
         Returns:
             Возвращает True в случае столкновения мяча и цели. В противном случае возвращает False.
         """
-        # FIXME
         if math.sqrt(abs(self.x - obj.pos_x()) **2 + abs(self.y - obj.pos_y())**2) < self.r + obj.radius():
             return True
         else:
@@ -111,7 +109,7 @@ class gun():
         self.f2_power = 10
         self.f2_on = 1
         self.an = 0
-        self.id = canv.create_line(20, 450, 50, 420, width=7) # FIXME: don't know how to set it...
+        self.id = canv.create_line(20, 450, 50, 420, width=7)
 
     def fire2_start(self, event):
         self.f2_on = 1
@@ -160,7 +158,6 @@ class target():
         self.points = 0
         self.live = 1
         self.vy = rnd(-5, 5)
-        # FIXME: don't work!!! How to call this functions when object is created?
         self.id = canv.create_oval(0, 0, 0, 0)
         self.id_points = canv.create_text(30,30,text ='' ,font = '28')
         self.new_target()
